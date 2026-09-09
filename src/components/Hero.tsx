@@ -20,24 +20,33 @@ export const Hero: React.FC<HeroProps> = ({
   const [manualProgress, setManualProgress] = useState<number>(0);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      if (!containerRef.current) return;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (containerRef.current) {
+            const rect = containerRef.current.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            const totalScrollableHeight = containerRef.current.offsetHeight - viewportHeight;
 
-      const rect = containerRef.current.getBoundingClientRect();
-      const totalScrollableHeight = containerRef.current.offsetHeight - window.innerHeight;
+            if (totalScrollableHeight > 0) {
+              // When rect.top is 0, progress is 0. When rect.bottom is viewportHeight, progress is 1.
+              const currentScroll = -rect.top;
+              const rawProgress = currentScroll / totalScrollableHeight;
+              const clamped = Math.min(1, Math.max(0, rawProgress));
 
-      if (totalScrollableHeight <= 0) return;
-
-      // When rect.top is 0, progress is 0. When rect.bottom is window.innerHeight, progress is 1.
-      const currentScroll = -rect.top;
-      const rawProgress = currentScroll / totalScrollableHeight;
-      const clamped = Math.min(1, Math.max(0, rawProgress));
-
-      if (!isManualOverride) {
-        setScrollProgress(clamped);
-        if (onHeroScrollProgressChange) {
-          onHeroScrollProgressChange(clamped);
-        }
+              if (!isManualOverride) {
+                setScrollProgress(clamped);
+                if (onHeroScrollProgressChange) {
+                  onHeroScrollProgressChange(clamped);
+                }
+              }
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -56,11 +65,10 @@ export const Hero: React.FC<HeroProps> = ({
     <section
       id="hero"
       ref={containerRef}
-      className="relative w-full bg-[#FFFFFF]"
-      style={{ height: '240vh' }} // Cinematic scroll assembly track
+      className="relative w-full bg-[#0A0A0C] h-[280vh] md:h-[250vh]"
     >
       {/* Sticky Screen Viewport */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden bg-[#0A0A0C]">
+      <div className="sticky top-0 h-screen h-[100dvh] w-full flex flex-col justify-between overflow-hidden bg-[#0A0A0C] z-10">
         {/* Full-Screen WebP Image Sequence Canvas Background */}
         <div className="absolute inset-0 w-full h-full z-0 overflow-hidden select-none">
           <PhoneCanvas
@@ -70,8 +78,14 @@ export const Hero: React.FC<HeroProps> = ({
             showTelemetry={false}
           />
           {/* Subtle cinematic gradient scrim so overlaid typography and controls stay crisp and legible */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/80 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/20 to-black/85 pointer-events-none" />
           <div className="absolute inset-0 bg-radial from-[#8B0000]/20 via-transparent to-transparent pointer-events-none" />
+
+          {/* Smooth color blend to next section (#8B0000) as phone finishes assembling */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-[#8B0000]/40 to-transparent pointer-events-none transition-opacity duration-300"
+            style={{ opacity: Math.min(1, Math.max(0, (activeProgress - 0.7) / 0.3)) }}
+          />
         </div>
 
         {/* Overlaid UI Content: Positioned over the full-screen canvas */}

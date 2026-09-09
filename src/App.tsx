@@ -41,8 +41,8 @@ export default function App() {
       const heroEl = document.getElementById('hero');
       if (heroEl) {
         const rect = heroEl.getBoundingClientRect();
-        // If bottom of hero is still below the top 20% of viewport, hero is active
-        if (rect.bottom > window.innerHeight * 0.2) {
+        // If bottom of hero is still visible or approaching exit, hero is active
+        if (rect.bottom > 10) {
           setIsHeroActive(true);
         } else {
           setIsHeroActive(false);
@@ -128,7 +128,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-[#FFFFFF] text-[#18181B] selection:bg-[#8B0000] selection:text-white">
+    <div className="relative min-h-screen w-full max-w-full overflow-x-clip bg-[#FFFFFF] text-[#18181B] selection:bg-[#8B0000] selection:text-white">
       {/* Sticky Luxury Header */}
       <Navbar
         onOpenShop={() => setIsShopDrawerOpen(true)}
@@ -150,7 +150,7 @@ export default function App() {
       />
 
       {/* Main Content Sections */}
-      <main id="main-content" className="relative w-full max-w-full overflow-x-hidden">
+      <main id="main-content" className="relative w-full max-w-full overflow-x-clip">
         {/* Mobile Products */}
         <Products
           onViewDetails={handleViewProductDetails}

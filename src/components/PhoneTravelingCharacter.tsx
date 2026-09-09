@@ -166,7 +166,7 @@ export const PhoneTravelingCharacter: React.FC<PhoneTravelingCharacterProps> = (
         />
 
         {/* Smartphone Display Sized to 16:9 Aspect Ratio */}
-        <div className="relative w-[320px] sm:w-[440px] md:w-[540px] lg:w-[620px] aspect-[16/9] flex items-center justify-center">
+        <div className="relative w-[280px] xs:w-[320px] sm:w-[440px] md:w-[540px] lg:w-[620px] max-w-[88vw] aspect-[16/9] flex items-center justify-center">
           <img
             src={currentImageSrc}
             alt="MOBIXA Floating Smartphone"

@@ -27,7 +27,7 @@ export const Brands: React.FC = () => {
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F6F3ED] border border-[#E5DFD4] text-[11px] uppercase tracking-[0.2em] text-[#18181B] font-semibold mb-3 shadow-2xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/80 border border-[#D8D1C4] text-[11px] uppercase tracking-[0.2em] text-[#18181B] font-semibold mb-3 shadow-2xs">
             <ShieldCheck className="w-3.5 h-3.5 text-[#8B0000]" />
             <span>Authorized Retail & Service Support</span>
           </div>
@@ -46,7 +46,7 @@ export const Brands: React.FC = () => {
               type="button"
               onClick={scrollLeft}
               aria-label="Scroll brands left"
-              className="p-2.5 rounded-full bg-white hover:bg-[#F6F3ED] border border-[#E5DFD4] hover:border-[#8B0000] text-[#18181B] transition-all shadow-xs active:scale-95"
+              className="p-2.5 rounded-full bg-white hover:bg-[#F6F3ED] border border-[#D8D1C4] hover:border-[#8B0000] text-[#18181B] transition-all shadow-xs active:scale-95"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -57,7 +57,7 @@ export const Brands: React.FC = () => {
               type="button"
               onClick={scrollRight}
               aria-label="Scroll brands right"
-              className="p-2.5 rounded-full bg-white hover:bg-[#F6F3ED] border border-[#E5DFD4] hover:border-[#8B0000] text-[#18181B] transition-all shadow-xs active:scale-95"
+              className="p-2.5 rounded-full bg-white hover:bg-[#F6F3ED] border border-[#D8D1C4] hover:border-[#8B0000] text-[#18181B] transition-all shadow-xs active:scale-95"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -68,8 +68,8 @@ export const Brands: React.FC = () => {
       {/* Full-width Continuous Sliding Track (Marquee + Interactive Touch Scroll) */}
       <div className="relative z-20 w-full overflow-hidden py-4">
         {/* Subtle Edge Fade Gradients for smooth infinite sliding appearance */}
-        <div className="absolute top-0 bottom-0 left-0 w-12 sm:w-28 bg-gradient-to-r from-[#FFFFFF] to-transparent z-30 pointer-events-none" />
-        <div className="absolute top-0 bottom-0 right-0 w-12 sm:w-28 bg-gradient-to-l from-[#FFFFFF] to-transparent z-30 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 left-0 w-12 sm:w-28 bg-gradient-to-r from-[#EDE7C7] to-transparent z-30 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-12 sm:w-28 bg-gradient-to-l from-[#EDE7C7] to-transparent z-30 pointer-events-none" />
 
         {/* Continuous Animated Marquee Row 1 */}
         <div
@@ -80,7 +80,7 @@ export const Brands: React.FC = () => {
             {marqueeBrands.map((brand, idx) => (
               <div
                 key={`${brand.id}-${idx}`}
-                className="group relative w-64 sm:w-72 shrink-0 rounded-2xl bg-white/90 backdrop-blur-sm border border-[#E5DFD4] hover:border-[#8B0000] p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-[#8B0000]/10 hover:-translate-y-1 shadow-xs"
+                className="group relative w-60 sm:w-72 shrink-0 rounded-2xl bg-white/95 backdrop-blur-sm border border-[#D8D1C4] hover:border-[#8B0000] p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-[#8B0000]/10 hover:-translate-y-1 shadow-xs"
               >
                 <div className="flex items-center justify-between mb-4">
                   {/* Brand Logo Image */}
@@ -115,7 +115,7 @@ export const Brands: React.FC = () => {
 
       {/* Assurance Bar below brands */}
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-14">
-        <div className="p-6 rounded-2xl bg-[#F8F6F2] border border-[#E5DFD4] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
+        <div className="p-6 rounded-2xl bg-white/95 border border-[#D8D1C4] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
           <div className="flex items-center gap-3 text-center sm:text-left">
             <span className="w-10 h-10 rounded-xl bg-[#8B0000]/10 border border-[#8B0000]/20 flex items-center justify-center text-[#8B0000] shrink-0">
               <Sparkles className="w-5 h-5 text-[#8B0000]" />

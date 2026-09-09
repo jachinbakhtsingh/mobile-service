@@ -47,7 +47,7 @@ export const Accessories: React.FC<AccessoriesProps> = ({ onAddToCart }) => {
         </div>
 
         {/* 12 Premium Category Chips (Horizontal Scroll) */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 scrollbar-none">
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 max-w-full">
           {ACCESSORY_CATEGORIES.map((cat) => (
             <button
               key={cat.id}

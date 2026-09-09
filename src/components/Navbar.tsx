@@ -141,7 +141,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
-            className="lg:hidden p-2 rounded-lg bg-white border border-[#E5DFD4] text-[#18181B] hover:text-[#8B0000] focus:outline-none shadow-xs"
+            className="lg:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl bg-white border border-[#E5DFD4] text-[#18181B] hover:text-[#8B0000] focus:outline-none shadow-xs active:scale-95 transition-all"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -151,10 +151,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
       {/* Mobile Drawer Overlay */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm lg:hidden flex flex-col justify-between pt-24 pb-8 px-6 transition-all"
+          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden overflow-y-auto pt-20 pb-10 px-4 sm:px-6 transition-all flex flex-col justify-start gap-4"
           onClick={() => setMobileMenuOpen(false)}
         >
-          <div className="flex flex-col gap-2.5 bg-white p-5 rounded-2xl border border-[#E5DFD4] shadow-2xl" onClick={(e) => e.stopPropagation()}>
+          <div className="flex flex-col gap-2 bg-white p-5 rounded-2xl border border-[#E5DFD4] shadow-2xl shrink-0" onClick={(e) => e.stopPropagation()}>
             <div className="text-xs uppercase tracking-widest text-[#71717A] font-mono px-2 mb-1 font-semibold">
               Menu Navigation
             </div>
@@ -166,7 +166,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className="flex items-center justify-between px-4 py-2.5 rounded-xl bg-[#F6F3ED] border border-[#E5DFD4] text-sm font-semibold text-[#18181B] hover:bg-[#EDE8DE] transition-colors"
+                className="flex items-center justify-between px-4 py-3 rounded-xl bg-[#F6F3ED] border border-[#E5DFD4] text-sm font-semibold text-[#18181B] hover:bg-[#EDE8DE] active:scale-[0.99] transition-all min-h-[44px]"
               >
                 <span>{link.name}</span>
                 <ArrowRight className="w-4 h-4 text-[#8B0000]" />
@@ -175,7 +175,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
           </div>
 
           {/* Bottom Actions for Mobile */}
-          <div className="flex flex-col gap-3 pt-4 bg-white/95 p-5 rounded-2xl border border-[#E5DFD4] shadow-xl mt-4" onClick={(e) => e.stopPropagation()}>
+          <div className="flex flex-col gap-3 bg-white/95 p-5 rounded-2xl border border-[#E5DFD4] shadow-xl shrink-0" onClick={(e) => e.stopPropagation()}>
             <button
               type="button"
               onClick={() => {
@@ -183,7 +183,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
                 if (onOpenShop) onOpenShop();
                 else scrollToSection('#mobiles');
               }}
-              className="w-full py-3 rounded-xl bg-[#8B0000] text-white font-semibold text-center flex items-center justify-center gap-2 shadow-md shadow-[#8B0000]/30 text-sm"
+              className="w-full py-3.5 rounded-xl bg-[#8B0000] text-white font-semibold text-center flex items-center justify-center gap-2 shadow-md shadow-[#8B0000]/30 text-sm min-h-[44px] active:scale-[0.98] transition-all"
             >
               <ShoppingBag className="w-4 h-4" />
               <span>Explore Mobiles & Accessories</span>
@@ -196,7 +196,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
                   setMobileMenuOpen(false);
                   onOpenBookService();
                 }}
-                className="w-full py-2.5 rounded-xl bg-[#F6F3ED] border border-[#E5DFD4] text-[#18181B] text-sm font-medium flex items-center justify-center gap-2"
+                className="w-full py-3 rounded-xl bg-[#F6F3ED] border border-[#E5DFD4] text-[#18181B] text-sm font-medium flex items-center justify-center gap-2 min-h-[44px] active:scale-[0.98] transition-all"
               >
                 <Wrench className="w-4 h-4 text-[#8B0000]" />
                 <span>Book Mobile Repair</span>
@@ -205,7 +205,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
 
             <a
               href={`tel:${CONTACT.phone.replace(/[^0-9+]/g, '')}`}
-              className="w-full py-2 rounded-xl bg-[#EDE8DE] text-center text-xs text-[#52525B] font-medium flex items-center justify-center gap-1.5"
+              className="w-full py-2.5 rounded-xl bg-[#EDE8DE] text-center text-xs text-[#52525B] font-medium flex items-center justify-center gap-1.5 min-h-[40px]"
             >
               <PhoneCall className="w-3.5 h-3.5 text-[#8B0000]" />
               <span>Call Us: {CONTACT.displayPhone}</span>

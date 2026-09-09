@@ -40,7 +40,7 @@ export const Products: React.FC<ProductsProps> = ({ onViewDetails, onBuyNow }) =
           </div>
 
           {/* Brand Filter Pills */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none">
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-2 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 max-w-full">
             {brandsFilter.map((brand) => (
               <button
                 key={brand}

@@ -4,9 +4,9 @@ import { PhoneCall, MapPin, Mail, Clock, Navigation, ExternalLink, ShieldCheck }
 
 export const Contact: React.FC = () => {
   return (
-    <section id="contact" className="relative py-24 bg-[#EDE7C7] border-t border-[#DDD6B5]">
+    <section id="contact" className="relative py-20 sm:py-24 bg-[#EDE7C7] border-t border-[#DDD6B5]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-        <div className="rounded-3xl bg-white/95 border border-[#D8D1C4] p-8 sm:p-12 shadow-xl relative overflow-hidden">
+        <div className="rounded-3xl bg-white/95 border border-[#D8D1C4] p-6 sm:p-10 md:p-12 shadow-xl relative overflow-hidden">
           {/* Subtle Ambient Red Flare */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-[#8B0000]/5 rounded-full blur-[100px] pointer-events-none" />
 

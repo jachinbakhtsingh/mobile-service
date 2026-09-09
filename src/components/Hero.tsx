@@ -98,13 +98,13 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
 
           {/* Bottom Bar: Action Buttons & Scroll Indicator Overlaid */}
-          <div className="pb-5 sm:pb-7 md:pb-8 px-4 max-w-xl mx-auto w-full flex flex-col items-center gap-3 pointer-events-auto">
-            <div className="flex flex-wrap items-center justify-center gap-3 w-full">
+          <div className="pb-5 sm:pb-7 md:pb-8 px-2 sm:px-4 max-w-xl mx-auto w-full flex flex-col items-center gap-3 pointer-events-auto">
+            <div className="flex flex-col xs:flex-row items-center justify-center gap-3 w-full">
               <button
                 id="hero-explore-mobiles-btn"
                 type="button"
                 onClick={onExploreMobiles}
-                className="flex-1 sm:flex-initial px-7 py-2.5 rounded-full bg-[#8B0000] hover:bg-[#A30808] text-white font-semibold text-sm tracking-wide shadow-xl shadow-[#8B0000]/40 hover:scale-[1.03] active:scale-[0.97] transition-all flex items-center justify-center gap-2"
+                className="w-full xs:w-auto px-7 py-3 rounded-full bg-[#8B0000] hover:bg-[#A30808] text-white font-semibold text-sm tracking-wide shadow-xl shadow-[#8B0000]/40 hover:scale-[1.03] active:scale-[0.97] transition-all flex items-center justify-center gap-2 min-h-[44px]"
               >
                 <ShoppingBag className="w-4 h-4" />
                 <span>Explore Mobiles</span>
@@ -114,7 +114,7 @@ export const Hero: React.FC<HeroProps> = ({
                 id="hero-book-service-btn"
                 type="button"
                 onClick={onBookService}
-                className="flex-1 sm:flex-initial px-7 py-2.5 rounded-full bg-white/95 hover:bg-white text-[#18181B] border border-white/30 font-semibold text-sm tracking-wide hover:scale-[1.03] active:scale-[0.97] transition-all flex items-center justify-center gap-2 shadow-xl backdrop-blur-md"
+                className="w-full xs:w-auto px-7 py-3 rounded-full bg-white/95 hover:bg-white text-[#18181B] border border-white/30 font-semibold text-sm tracking-wide hover:scale-[1.03] active:scale-[0.97] transition-all flex items-center justify-center gap-2 shadow-xl backdrop-blur-md min-h-[44px]"
               >
                 <Wrench className="w-4 h-4 text-[#8B0000]" />
                 <span>Book a Service</span>
@@ -122,15 +122,15 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* Interactive Scroll Assembly Indicator */}
-            <div className="flex items-center gap-3 text-xs text-zinc-300 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 shadow-lg">
-              <span className="flex items-center gap-1.5 font-mono text-[11px] text-white font-semibold">
-                <ArrowDown className="w-3.5 h-3.5 text-[#FF4D4D] animate-bounce" />
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs text-zinc-300 bg-black/60 backdrop-blur-md px-3 sm:px-4 py-1.5 rounded-full border border-white/20 shadow-lg max-w-full">
+              <span className="flex items-center gap-1.5 font-mono text-[10px] sm:text-[11px] text-white font-semibold whitespace-nowrap">
+                <ArrowDown className="w-3 sm:w-3.5 h-3 sm:h-3.5 text-[#FF4D4D] animate-bounce" />
                 <span>SCROLL DOWN TO ASSEMBLE</span>
               </span>
 
-              <span className="w-1 h-1 rounded-full bg-white/40" />
+              <span className="hidden xs:inline-block w-1 h-1 rounded-full bg-white/40" />
 
-              <span className="text-[10px] font-mono text-zinc-400">
+              <span className="text-[10px] font-mono text-zinc-400 whitespace-nowrap">
                 FRAME {String(currentFrameNumber).padStart(2, '0')}/79
               </span>
 
@@ -140,10 +140,10 @@ export const Hero: React.FC<HeroProps> = ({
               <button
                 type="button"
                 onClick={() => setIsManualOverride(!isManualOverride)}
-                className="text-[10px] tracking-wider uppercase text-zinc-300 hover:text-white flex items-center gap-1 transition-colors font-medium"
+                className="text-[10px] tracking-wider uppercase text-zinc-300 hover:text-white flex items-center gap-1 transition-colors font-medium whitespace-nowrap"
               >
                 <Sliders className="w-2.5 h-2.5 text-[#FF4D4D]" />
-                <span>{isManualOverride ? 'Switch to Scroll' : 'Scrubber'}</span>
+                <span>{isManualOverride ? 'Scroll Mode' : 'Scrubber'}</span>
               </button>
             </div>
 

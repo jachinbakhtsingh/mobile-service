@@ -18,16 +18,16 @@ export const RepairProcess: React.FC = () => {
           </p>
         </div>
 
-        {/* 4-Step Process: Horizontal on Desktop, Vertical on Mobile */}
-        <div className="relative grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8">
+        {/* 4-Step Process: 1-col on mobile, 2-col on tablet, 4-col on laptop/desktop */}
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {/* Connecting line on desktop */}
-          <div className="hidden md:block absolute top-1/2 left-12 right-12 h-px bg-gradient-to-r from-[#8B0000]/20 via-[#8B0000] to-[#8B0000]/20 -translate-y-6 z-0" />
+          <div className="hidden lg:block absolute top-1/2 left-12 right-12 h-px bg-gradient-to-r from-[#8B0000]/20 via-[#8B0000] to-[#8B0000]/20 -translate-y-6 z-0" />
 
           {REPAIR_STEPS.map((step, idx) => (
             <div
               key={step.step}
               id={`repair-step-${step.step}`}
-              className="relative z-10 flex flex-col items-center md:items-start p-6 rounded-2xl bg-white/95 backdrop-blur-sm border border-[#D8D1C4] hover:border-[#8B0000] hover:bg-white transition-all duration-300 hover:shadow-lg hover:shadow-[#8B0000]/10 shadow-xs"
+              className="relative z-10 flex flex-col items-start p-6 rounded-2xl bg-white/95 backdrop-blur-sm border border-[#D8D1C4] hover:border-[#8B0000] hover:bg-white transition-all duration-300 hover:shadow-lg hover:shadow-[#8B0000]/10 shadow-xs"
             >
               {/* Step Number Badge */}
               <div className="flex items-center justify-between w-full mb-4">

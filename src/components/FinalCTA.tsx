@@ -43,7 +43,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onShopMobiles, onBookService
         {/* The Definitive Mobile Destination Landing Stage: Where the scroll image settles */}
         <div
           id="final-cta-settle-stage"
-          className="relative my-8 sm:my-10 w-full max-w-[320px] sm:max-w-[440px] md:max-w-[540px] lg:max-w-[620px] aspect-[16/9] flex items-center justify-center select-none"
+          className="relative my-8 sm:my-10 w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[440px] md:max-w-[540px] lg:max-w-[620px] max-w-[88vw] aspect-[16/9] flex items-center justify-center select-none"
         >
           {/* Radiant Pedestal Ring Aura */}
           <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#EDE7C7]/15 via-[#EDE7C7]/25 to-[#EDE7C7]/15 blur-3xl transform scale-115 pointer-events-none" />

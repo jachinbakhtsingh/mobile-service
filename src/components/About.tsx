@@ -20,20 +20,20 @@ export const About: React.FC<AboutProps> = ({ onDiscover }) => {
               <img
                 src={SITE_IMAGES.aboutImage}
                 alt="MOBIXA Showroom & Lab"
-                className="w-full h-[420px] sm:h-[480px] object-cover filter brightness-95 group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-[280px] xs:h-[340px] sm:h-[420px] lg:h-[480px] object-cover filter brightness-95 group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
               {/* Floating Showroom Badge */}
-              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-white/95 border border-[#E5DFD4] backdrop-blur-md flex items-center justify-between shadow-xl">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#8B0000] flex items-center justify-center text-white font-bold text-base shadow-sm shadow-[#8B0000]/40">
+              <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 p-3 sm:p-5 rounded-2xl bg-white/95 border border-[#E5DFD4] backdrop-blur-md flex items-center justify-between shadow-xl">
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#8B0000] flex items-center justify-center text-white font-bold text-sm sm:text-base shadow-sm shadow-[#8B0000]/40 shrink-0">
                     M
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-[#18181B]">Experience The Showroom</h4>
-                    <p className="text-xs text-[#52525B]">Walk-in diagnostics & live device hands-on</p>
+                    <h4 className="text-xs sm:text-sm font-bold text-[#18181B]">Experience The Showroom</h4>
+                    <p className="text-[11px] sm:text-xs text-[#52525B]">Walk-in diagnostics & live device hands-on</p>
                   </div>
                 </div>
 
@@ -60,18 +60,18 @@ export const About: React.FC<AboutProps> = ({ onDiscover }) => {
             </p>
 
             {/* 3 Pillars Row */}
-            <div className="mt-8 grid grid-cols-3 gap-4 pt-6 border-t border-white/20">
+            <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-4 pt-6 border-t border-white/20">
               <div>
-                <span className="text-2xl font-extrabold text-[#EDE7C7] block">100%</span>
-                <span className="text-xs text-[#EDE7C7]/80 font-medium">Genuine OEM Parts</span>
+                <span className="text-xl sm:text-2xl font-extrabold text-[#EDE7C7] block">100%</span>
+                <span className="text-[11px] sm:text-xs text-[#EDE7C7]/80 font-medium">Genuine Parts</span>
               </div>
               <div>
-                <span className="text-2xl font-extrabold text-[#EDE7C7] block">30min</span>
-                <span className="text-xs text-[#EDE7C7]/80 font-medium">Express Repairs</span>
+                <span className="text-xl sm:text-2xl font-extrabold text-[#EDE7C7] block">30min</span>
+                <span className="text-[11px] sm:text-xs text-[#EDE7C7]/80 font-medium">Express Repairs</span>
               </div>
               <div>
-                <span className="text-2xl font-extrabold text-[#EDE7C7] block">180d</span>
-                <span className="text-xs text-[#EDE7C7]/80 font-medium">Service Warranty</span>
+                <span className="text-xl sm:text-2xl font-extrabold text-[#EDE7C7] block">180d</span>
+                <span className="text-[11px] sm:text-xs text-[#EDE7C7]/80 font-medium">Warranty</span>
               </div>
             </div>
 

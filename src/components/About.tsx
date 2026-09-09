@@ -8,70 +8,70 @@ interface AboutProps {
 
 export const About: React.FC<AboutProps> = ({ onDiscover }) => {
   return (
-    <section id="about" className="relative py-24 md:py-32 bg-transparent border-t border-[#1C1417] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="about" className="relative py-24 md:py-32 bg-[#8B0000] border-t border-[#A30808] text-white overflow-hidden">
+      {/* Accent backdrop glow */}
+      <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-white/10 rounded-full blur-[140px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Visual Showcase */}
           <div className="lg:col-span-6 relative">
-            <div className="relative rounded-3xl overflow-hidden border border-[#29181B] bg-[#141315] shadow-2xl shadow-black/60 group">
+            <div className="relative rounded-3xl overflow-hidden border border-white/30 bg-white shadow-2xl group">
               <img
                 src={SITE_IMAGES.aboutImage}
                 alt="MOBIXA Showroom & Lab"
-                className="w-full h-[420px] sm:h-[480px] object-cover filter brightness-90 group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-[420px] sm:h-[480px] object-cover filter brightness-95 group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B0C] via-[#0B0B0C]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
               {/* Floating Showroom Badge */}
-              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-[#141315]/90 border border-[#29181B] backdrop-blur-md flex items-center justify-between">
+              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-white/95 border border-[#E5DFD4] backdrop-blur-md flex items-center justify-between shadow-xl">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[#8B0000] flex items-center justify-center text-[#EDE7C7] font-bold text-base shadow-lg shadow-[#8B0000]/40">
+                  <div className="w-10 h-10 rounded-xl bg-[#8B0000] flex items-center justify-center text-white font-bold text-base shadow-sm shadow-[#8B0000]/40">
                     M
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-[#EDE7C7]">Experience The Showroom</h4>
-                    <p className="text-xs text-[#8E8770]">Walk-in diagnostics & live device hands-on</p>
+                    <h4 className="text-sm font-bold text-[#18181B]">Experience The Showroom</h4>
+                    <p className="text-xs text-[#52525B]">Walk-in diagnostics & live device hands-on</p>
                   </div>
                 </div>
 
-                <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono text-[#EDE7C7]">
+                <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono text-[#18181B] font-semibold">
                   <Clock className="w-3.5 h-3.5 text-[#8B0000]" /> Open 6 Days
                 </span>
               </div>
             </div>
-
-            {/* Accent backdrop glow */}
-            <div className="absolute -top-10 -left-10 w-72 h-72 bg-[#8B0000]/20 rounded-full blur-[100px] pointer-events-none" />
           </div>
 
           {/* Right Column: Story & Philosophy */}
           <div className="lg:col-span-6 flex flex-col justify-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141315] border border-[#29181B] text-[11px] uppercase tracking-[0.2em] text-[#EDE7C7] mb-4 w-fit">
-              <Sparkles className="w-3.5 h-3.5 text-[#8B0000]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-[11px] uppercase tracking-[0.2em] text-[#EDE7C7] font-semibold mb-4 w-fit shadow-sm">
+              <Sparkles className="w-3.5 h-3.5 text-[#EDE7C7]" />
               <span>Showroom Heritage</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#EDE7C7] leading-tight">
-              Built Around Your <span className="text-gradient-burgundy">Mobile Life.</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              Built Around Your <span className="text-[#EDE7C7]">Mobile Life.</span>
             </h2>
 
-            <p className="mt-6 text-base text-[#C2BCA8] leading-relaxed">
+            <p className="mt-6 text-base text-[#EDE7C7]/90 leading-relaxed font-normal">
               MOBIXA brings smartphones, professional mobile servicing, and everyday technology together under one roof. Whether you're upgrading your phone, fixing a device, or looking for the right accessory, we're here to make the experience simple.
             </p>
 
             {/* 3 Pillars Row */}
-            <div className="mt-8 grid grid-cols-3 gap-4 pt-6 border-t border-[#221316]">
+            <div className="mt-8 grid grid-cols-3 gap-4 pt-6 border-t border-white/20">
               <div>
-                <span className="text-2xl font-black text-[#EDE7C7] block">100%</span>
-                <span className="text-xs text-[#8E8770]">Genuine OEM Parts</span>
+                <span className="text-2xl font-extrabold text-[#EDE7C7] block">100%</span>
+                <span className="text-xs text-[#EDE7C7]/80 font-medium">Genuine OEM Parts</span>
               </div>
               <div>
-                <span className="text-2xl font-black text-[#EDE7C7] block">30min</span>
-                <span className="text-xs text-[#8E8770]">Express Repairs</span>
+                <span className="text-2xl font-extrabold text-[#EDE7C7] block">30min</span>
+                <span className="text-xs text-[#EDE7C7]/80 font-medium">Express Repairs</span>
               </div>
               <div>
-                <span className="text-2xl font-black text-[#EDE7C7] block">180d</span>
-                <span className="text-xs text-[#8E8770]">Service Warranty</span>
+                <span className="text-2xl font-extrabold text-[#EDE7C7] block">180d</span>
+                <span className="text-xs text-[#EDE7C7]/80 font-medium">Service Warranty</span>
               </div>
             </div>
 
@@ -86,7 +86,7 @@ export const About: React.FC<AboutProps> = ({ onDiscover }) => {
                     onDiscover();
                   }
                 }}
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#8B0000] hover:bg-[#A30808] text-[#EDE7C7] font-semibold text-sm tracking-wide shadow-xl shadow-[#8B0000]/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#EDE7C7] hover:bg-white text-[#8B0000] font-bold text-sm tracking-wide shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
                 <span>Discover MOBIXA</span>
                 <ArrowRight className="w-4 h-4" />
@@ -94,7 +94,7 @@ export const About: React.FC<AboutProps> = ({ onDiscover }) => {
 
               <a
                 href="#services"
-                className="text-xs font-semibold text-[#8E8770] hover:text-[#EDE7C7] transition-colors flex items-center gap-1"
+                className="text-xs font-semibold text-[#EDE7C7] hover:text-white transition-colors flex items-center gap-1"
               >
                 <span>View Service Standards</span>
               </a>

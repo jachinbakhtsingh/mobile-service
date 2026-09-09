@@ -41,11 +41,16 @@ export const PhoneTravelingCharacter: React.FC<PhoneTravelingCharacterProps> = (
 
   // Track the landing stage inside "The Definitive Mobile Destination" section (#final-cta)
   useEffect(() => {
+    let animationFrameId: number;
+
     const updatePosition = () => {
-      if (currentSection === 'final-cta') {
-        const stageEl = document.getElementById('final-cta-settle-stage');
-        if (stageEl) {
-          const rect = stageEl.getBoundingClientRect();
+      const isTargetSection = currentSection === 'final-cta' || currentSection === 'contact';
+      const stageEl = document.getElementById('final-cta-settle-stage');
+
+      if (stageEl) {
+        const rect = stageEl.getBoundingClientRect();
+        // Check if settle stage is approaching or inside viewport
+        if (isTargetSection || (rect.top < window.innerHeight && rect.bottom > 0)) {
           const centerX = rect.left + rect.width / 2;
           const centerY = rect.top + rect.height / 2;
           const screenCenterX = window.innerWidth / 2;
@@ -60,12 +65,19 @@ export const PhoneTravelingCharacter: React.FC<PhoneTravelingCharacterProps> = (
       setStageOffset(null);
     };
 
-    window.addEventListener('scroll', updatePosition, { passive: true });
-    window.addEventListener('resize', updatePosition);
+    const onScrollOrResize = () => {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(updatePosition);
+    };
+
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize);
     updatePosition();
+
     return () => {
-      window.removeEventListener('scroll', updatePosition);
-      window.removeEventListener('resize', updatePosition);
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('scroll', onScrollOrResize);
+      window.removeEventListener('resize', onScrollOrResize);
     };
   }, [currentSection]);
 
@@ -73,58 +85,55 @@ export const PhoneTravelingCharacter: React.FC<PhoneTravelingCharacterProps> = (
   const isHidden = isHeroActive || currentSection === 'hero';
 
   // Section-based choreography under the overlay
-  let transformClasses = 'translate-x-0 scale-80 rotate-0 opacity-50';
+  let transformClasses = 'translate-x-0 scale-75 rotate-0 opacity-50';
   let haloGlow = 'rgba(139, 0, 0, 0.35)';
   let isSettled = false;
 
   switch (currentSection) {
     case 'mobiles':
-      transformClasses = 'translate-x-0 md:translate-x-[24vw] lg:translate-x-[28vw] scale-80 sm:scale-85 md:scale-90 rotate-[-4deg] opacity-60';
-      haloGlow = 'rgba(139, 0, 0, 0.4)';
+      transformClasses = 'translate-x-[-3vw] md:translate-x-[22vw] lg:translate-x-[26vw] scale-75 sm:scale-80 md:scale-85 rotate-[-4deg] opacity-65';
+      haloGlow = 'rgba(237, 231, 199, 0.45)';
       break;
 
     case 'brands':
-      transformClasses = 'translate-x-0 md:-translate-x-[24vw] lg:-translate-x-[28vw] scale-75 sm:scale-80 md:scale-85 rotate-[5deg] opacity-55';
-      haloGlow = 'rgba(237, 231, 199, 0.25)';
+      transformClasses = 'translate-x-[3vw] md:-translate-x-[22vw] lg:-translate-x-[26vw] scale-70 sm:scale-75 md:scale-80 rotate-[5deg] opacity-60';
+      haloGlow = 'rgba(139, 0, 0, 0.35)';
       break;
 
     case 'services':
-      transformClasses = 'translate-x-0 md:translate-x-[24vw] lg:translate-x-[28vw] scale-80 sm:scale-85 md:scale-90 rotate-[-3deg] opacity-60';
-      haloGlow = 'rgba(139, 0, 0, 0.45)';
+      transformClasses = 'translate-x-[-3vw] md:translate-x-[22vw] lg:translate-x-[26vw] scale-75 sm:scale-80 md:scale-85 rotate-[-3deg] opacity-65';
+      haloGlow = 'rgba(237, 231, 199, 0.45)';
       break;
 
     case 'accessories':
-      transformClasses = 'translate-x-0 md:-translate-x-[24vw] lg:-translate-x-[28vw] scale-75 sm:scale-80 md:scale-85 rotate-[4deg] opacity-55';
-      haloGlow = 'rgba(237, 231, 199, 0.25)';
+      transformClasses = 'translate-x-[3vw] md:-translate-x-[22vw] lg:-translate-x-[26vw] scale-70 sm:scale-75 md:scale-80 rotate-[4deg] opacity-60';
+      haloGlow = 'rgba(237, 231, 199, 0.45)';
       break;
 
     case 'why-us':
-      transformClasses = 'translate-x-0 md:translate-x-[24vw] lg:translate-x-[28vw] scale-80 sm:scale-85 md:scale-90 rotate-[-4deg] opacity-60';
+      transformClasses = 'translate-x-[-3vw] md:translate-x-[22vw] lg:translate-x-[26vw] scale-75 sm:scale-80 md:scale-85 rotate-[-4deg] opacity-65';
       haloGlow = 'rgba(139, 0, 0, 0.35)';
       break;
 
     case 'about':
-      transformClasses = 'translate-x-0 md:-translate-x-[24vw] lg:-translate-x-[28vw] scale-80 sm:scale-85 md:scale-90 rotate-[4deg] opacity-55';
-      haloGlow = 'rgba(237, 231, 199, 0.25)';
-      break;
-
-    case 'testimonials':
-      transformClasses = 'translate-x-0 md:translate-x-[12vw] lg:translate-x-[16vw] scale-75 sm:scale-80 md:scale-85 rotate-[-2deg] opacity-60';
-      haloGlow = 'rgba(139, 0, 0, 0.3)';
-      break;
-
-    case 'final-cta':
-      isSettled = true;
-      transformClasses = 'translate-x-0 translate-y-0 scale-95 sm:scale-100 md:scale-105 rotate-0 opacity-100';
+      transformClasses = 'translate-x-[3vw] md:-translate-x-[22vw] lg:-translate-x-[26vw] scale-70 sm:scale-75 md:scale-80 rotate-[4deg] opacity-60';
       haloGlow = 'rgba(237, 231, 199, 0.45)';
       break;
 
+    case 'testimonials':
+      transformClasses = 'translate-x-[2vw] md:translate-x-[12vw] lg:translate-x-[16vw] scale-75 sm:scale-80 md:scale-85 rotate-[-2deg] opacity-70';
+      haloGlow = 'rgba(139, 0, 0, 0.35)';
+      break;
+
+    case 'final-cta':
     case 'contact':
-      transformClasses = 'translate-x-0 scale-75 opacity-0 pointer-events-none';
+      isSettled = true;
+      transformClasses = 'translate-x-0 translate-y-0 scale-95 sm:scale-100 md:scale-105 rotate-0 opacity-100';
+      haloGlow = 'rgba(237, 231, 199, 0.6)';
       break;
 
     default:
-      transformClasses = 'translate-x-0 md:translate-x-[24vw] scale-80 opacity-40';
+      transformClasses = 'translate-x-0 md:translate-x-[20vw] scale-75 opacity-40';
       break;
   }
 
@@ -137,9 +146,9 @@ export const PhoneTravelingCharacter: React.FC<PhoneTravelingCharacterProps> = (
       } ${prefersReducedMotion ? '!transition-none !transform-none' : ''}`}
     >
       <div
-        className={`relative flex items-center justify-center transition-all duration-700 ease-out ${
-          isSettled && stageOffset ? '' : transformClasses
-        }`}
+        className={`relative flex items-center justify-center ${
+          isSettled && stageOffset ? 'transition-transform duration-150 ease-out' : 'transition-all duration-700 ease-out'
+        } ${isSettled && stageOffset ? '' : transformClasses}`}
         style={{
           transform: isSettled && stageOffset
             ? `translate3d(${stageOffset.x}px, ${stageOffset.y}px, 0px) scale(1) rotate(0deg)`

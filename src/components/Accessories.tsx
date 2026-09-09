@@ -24,23 +24,24 @@ export const Accessories: React.FC<AccessoriesProps> = ({ onAddToCart }) => {
   };
 
   return (
-    <section id="accessories" className="relative py-24 md:py-32 bg-transparent border-t border-[#1C1417]">
+    <section id="accessories" className="relative py-24 md:py-32 bg-[#8B0000] border-t border-[#A30808] text-white">
       {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-96 h-96 bg-[#8B0000]/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-96 h-96 bg-white/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-black/20 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         {/* Section Header */}
         <div className="max-w-2xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141315] border border-[#29181B] text-[11px] uppercase tracking-[0.2em] text-[#EDE7C7] mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-[#8B0000]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-[11px] uppercase tracking-[0.2em] text-[#EDE7C7] font-semibold mb-3 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-[#EDE7C7]" />
             <span>Curated Ecosystem</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#EDE7C7]">
-            Everything Your <span className="text-gradient-cream">Phone Needs.</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+            Everything Your <span className="text-[#EDE7C7]">Phone Needs.</span>
           </h2>
 
-          <p className="mt-3 text-sm sm:text-base text-[#8E8770] leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-[#EDE7C7]/90 leading-relaxed font-normal">
             From hyper-speed GaN chargers to high-fidelity acoustics and military-grade cases. Precision engineered to augment your daily device.
           </p>
         </div>
@@ -52,15 +53,15 @@ export const Accessories: React.FC<AccessoriesProps> = ({ onAddToCart }) => {
               key={cat.id}
               type="button"
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 rounded-xl text-xs font-medium whitespace-nowrap transition-all flex items-center gap-1.5 ${
+              className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 shadow-2xs ${
                 activeCategory === cat.id
-                  ? 'bg-[#8B0000] text-[#EDE7C7] shadow-lg shadow-[#8B0000]/30'
-                  : 'bg-[#141315] text-[#8E8770] hover:text-[#EDE7C7] border border-[#29181B]'
+                  ? 'bg-[#EDE7C7] text-[#8B0000] shadow-md font-bold'
+                  : 'bg-white/15 text-white hover:bg-white/25 border border-white/20'
               }`}
             >
               <span>{cat.name}</span>
-              <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                activeCategory === cat.id ? 'bg-black/20 text-[#EDE7C7]' : 'bg-[#1E1C21] text-[#8E8770]'
+              <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono ${
+                activeCategory === cat.id ? 'bg-black/20 text-[#8B0000]' : 'bg-white/20 text-white'
               }`}>
                 {cat.count}
               </span>
@@ -76,11 +77,11 @@ export const Accessories: React.FC<AccessoriesProps> = ({ onAddToCart }) => {
               <div
                 key={item.id}
                 id={`accessory-card-${item.id}`}
-                className="group relative rounded-2xl bg-[#141315] border border-[#29181B] hover:border-[#8B0000]/60 p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:shadow-[#8B0000]/15 hover:-translate-y-1"
+                className="group relative rounded-2xl bg-white border border-[#E5DFD4] hover:border-[#8B0000]/60 p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-[#8B0000]/10 hover:-translate-y-1 shadow-xs"
               >
                 <div>
                   {/* Image container */}
-                  <div className="relative w-full h-52 rounded-xl bg-[#0F0E10] border border-[#221316] overflow-hidden flex items-center justify-center p-4 group-hover:bg-[#131215] transition-colors">
+                  <div className="relative w-full h-52 rounded-xl bg-[#F8F6F2] border border-[#EAE5DC] overflow-hidden flex items-center justify-center p-4 group-hover:bg-[#F4F1EA] transition-colors">
                     <img
                       src={item.image}
                       alt={item.name}
@@ -89,13 +90,13 @@ export const Accessories: React.FC<AccessoriesProps> = ({ onAddToCart }) => {
                     />
 
                     {/* Rating badge */}
-                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-[#141315]/90 border border-[#29181B] text-[10px] font-mono text-[#EDE7C7] flex items-center gap-1">
-                      <Star className="w-3 h-3 text-[#EDE7C7] fill-[#EDE7C7]" />
+                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-white/95 border border-[#E5DFD4] text-[10px] font-mono text-[#18181B] font-semibold flex items-center gap-1 shadow-2xs">
+                      <Star className="w-3 h-3 text-[#EAB308] fill-[#EAB308]" />
                       <span>{item.rating}</span>
                     </div>
 
                     {item.inStock && (
-                      <div className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-[#8B0000]/20 border border-[#8B0000]/40 text-[9px] uppercase font-mono text-[#EDE7C7]">
+                      <div className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-[#8B0000]/10 border border-[#8B0000]/20 text-[9px] uppercase font-mono text-[#8B0000] font-semibold">
                         In Stock
                       </div>
                     )}
@@ -103,10 +104,10 @@ export const Accessories: React.FC<AccessoriesProps> = ({ onAddToCart }) => {
 
                   {/* Title & Description */}
                   <div className="mt-4">
-                    <h3 className="text-lg font-bold text-[#EDE7C7] group-hover:text-white transition-colors">
+                    <h3 className="text-lg font-bold text-[#18181B] group-hover:text-[#8B0000] transition-colors">
                       {item.name}
                     </h3>
-                    <p className="mt-1 text-xs text-[#8E8770] line-clamp-2 leading-relaxed">
+                    <p className="mt-1 text-xs text-[#52525B] line-clamp-2 leading-relaxed font-normal">
                       {item.description}
                     </p>
                   </div>
@@ -116,7 +117,7 @@ export const Accessories: React.FC<AccessoriesProps> = ({ onAddToCart }) => {
                     {item.features.map((feat, i) => (
                       <span
                         key={i}
-                        className="px-2 py-0.5 rounded-md bg-[#1C1A1F] text-[10px] text-[#C2BCA8] font-mono"
+                        className="px-2 py-0.5 rounded-md bg-[#F6F3ED] border border-[#E5DFD4] text-[10px] text-[#52525B] font-mono"
                       >
                         {feat}
                       </span>
@@ -125,10 +126,10 @@ export const Accessories: React.FC<AccessoriesProps> = ({ onAddToCart }) => {
                 </div>
 
                 {/* Footer: Price & Add to Bag */}
-                <div className="mt-5 pt-3 border-t border-[#221316] flex items-center justify-between">
+                <div className="mt-5 pt-3 border-t border-[#EFEBE3] flex items-center justify-between">
                   <div>
-                    <span className="text-lg font-bold text-[#EDE7C7]">{item.price}</span>
-                    <span className="text-[10px] text-[#8E8770] block">Tax inclusive</span>
+                    <span className="text-lg font-extrabold text-[#8B0000]">{item.price}</span>
+                    <span className="text-[10px] text-[#71717A] block font-medium">Tax inclusive</span>
                   </div>
 
                   <button
@@ -136,8 +137,8 @@ export const Accessories: React.FC<AccessoriesProps> = ({ onAddToCart }) => {
                     onClick={() => handleAdd(item)}
                     className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-wide transition-all flex items-center gap-1.5 ${
                       isAdded
-                        ? 'bg-[#2E7D32] text-white'
-                        : 'bg-[#8B0000] hover:bg-[#A30808] text-[#EDE7C7] shadow-lg shadow-[#8B0000]/30'
+                        ? 'bg-[#16A34A] text-white shadow-sm'
+                        : 'bg-[#8B0000] hover:bg-[#A30808] text-white shadow-sm shadow-[#8B0000]/25'
                     }`}
                   >
                     {isAdded ? (

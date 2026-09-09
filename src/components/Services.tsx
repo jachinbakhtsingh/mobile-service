@@ -44,23 +44,24 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
   };
 
   return (
-    <section id="services" className="relative py-24 md:py-32 bg-transparent border-t border-[#1C1417]">
-      {/* Background Burgundy Aura */}
-      <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#8B0000]/10 rounded-full blur-[140px] pointer-events-none" />
+    <section id="services" className="relative py-24 md:py-32 bg-[#8B0000] border-t border-[#A30808] text-white">
+      {/* Background Ambient Glow */}
+      <div className="absolute top-1/3 left-10 w-96 h-96 bg-white/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-black/20 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         {/* Section Header */}
         <div className="max-w-2xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141315] border border-[#29181B] text-[11px] uppercase tracking-[0.2em] text-[#EDE7C7] mb-3">
-            <Wrench className="w-3.5 h-3.5 text-[#8B0000]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-[11px] uppercase tracking-[0.2em] text-[#EDE7C7] font-semibold mb-3 shadow-sm">
+            <Wrench className="w-3.5 h-3.5 text-[#EDE7C7]" />
             <span>Master Technician Lab</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#EDE7C7]">
-            Broken Screen? <span className="text-gradient-burgundy">We've Got It.</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+            Broken Screen? <span className="text-[#EDE7C7]">We've Got It.</span>
           </h2>
 
-          <p className="mt-3 text-sm sm:text-base text-[#8E8770] leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-[#EDE7C7]/90 leading-relaxed font-normal">
             Professional mobile repair with the care your device deserves. ESD-protected clean stations, certified OEM parts, and express turnarounds.
           </p>
         </div>
@@ -73,32 +74,32 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
               <div
                 key={service.id}
                 id={`service-card-${service.id}`}
-                className="group relative rounded-2xl bg-[#141315] border border-[#29181B] hover:border-[#8B0000]/80 p-6 flex flex-col justify-between transition-all duration-300 hover:bg-[#19171C] hover:shadow-2xl hover:shadow-[#8B0000]/15 hover:-translate-y-1"
+                className="group relative rounded-2xl bg-white border border-[#E5DFD4] hover:border-[#8B0000]/80 p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-[#8B0000]/10 hover:-translate-y-1 shadow-xs"
               >
                 <div>
                   {/* Service Icon */}
-                  <div className="w-12 h-12 rounded-xl bg-[#1F181B] border border-[#2B1519] group-hover:bg-[#8B0000] group-hover:border-[#8B0000] flex items-center justify-center text-[#EDE7C7] mb-5 transition-all duration-300 shadow-md">
-                    <Icon className="w-5 h-5 text-[#EDE7C7]" />
+                  <div className="w-12 h-12 rounded-xl bg-[#F6F3ED] border border-[#E5DFD4] group-hover:bg-[#8B0000] group-hover:border-[#8B0000] flex items-center justify-center text-[#8B0000] group-hover:text-white mb-5 transition-all duration-300 shadow-2xs">
+                    <Icon className="w-5 h-5 transition-colors" />
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-lg font-bold text-[#EDE7C7] group-hover:text-white transition-colors">
+                  <h3 className="text-lg font-bold text-[#18181B] group-hover:text-[#8B0000] transition-colors">
                     {service.name}
                   </h3>
 
-                  <p className="mt-2 text-xs text-[#8E8770] leading-relaxed">
+                  <p className="mt-2 text-xs text-[#52525B] leading-relaxed font-normal">
                     {service.description}
                   </p>
                 </div>
 
                 {/* Metrics & Booking Action */}
-                <div className="mt-6 pt-4 border-t border-[#221316]">
-                  <div className="flex items-center justify-between text-[11px] text-[#8E8770] mb-3 font-mono">
+                <div className="mt-6 pt-4 border-t border-[#EFEBE3]">
+                  <div className="flex items-center justify-between text-[11px] text-[#71717A] mb-3 font-mono">
                     <span className="flex items-center gap-1">
                       <Clock className="w-3 h-3 text-[#8B0000]" />
                       {service.turnaround}
                     </span>
-                    <span className="flex items-center gap-1 text-[#EDE7C7]">
+                    <span className="flex items-center gap-1 text-[#18181B] font-semibold">
                       <Shield className="w-3 h-3 text-[#8B0000]" />
                       {service.warranty}
                     </span>
@@ -106,14 +107,14 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
 
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] text-[#8E8770] uppercase block">Starts from</span>
-                      <span className="text-base font-bold text-[#EDE7C7]">{service.startingPrice}</span>
+                      <span className="text-[10px] text-[#71717A] uppercase block font-medium">Starts from</span>
+                      <span className="text-base font-extrabold text-[#8B0000]">{service.startingPrice}</span>
                     </div>
 
                     <button
                       type="button"
                       onClick={() => onSelectService(service)}
-                      className="px-3.5 py-1.5 rounded-lg bg-[#1F181B] hover:bg-[#8B0000] text-xs font-semibold text-[#EDE7C7] border border-[#2B1519] group-hover:border-transparent transition-all flex items-center gap-1"
+                      className="px-3.5 py-1.5 rounded-lg bg-[#F6F3ED] hover:bg-[#8B0000] hover:text-white text-xs font-semibold text-[#18181B] border border-[#E5DFD4] group-hover:border-transparent transition-all flex items-center gap-1 shadow-2xs"
                     >
                       <span>Book</span>
                       <ArrowRight className="w-3.5 h-3.5" />

@@ -49,7 +49,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
         id="navbar-header"
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'py-3.5 bg-[#0B0B0C]/90 backdrop-blur-md border-b border-[#29181B] shadow-2xl shadow-black/40'
+            ? 'py-3.5 bg-white/95 backdrop-blur-md border-b border-[#E5DFD4] shadow-md shadow-black/5'
             : 'py-5 bg-transparent'
         }`}
       >
@@ -67,14 +67,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
               <img src={BRAND.logoUrl} alt={BRAND.name} className="h-8 w-auto object-contain" />
             ) : (
               <div className="flex items-center gap-2.5">
-                <span className="w-8 h-8 rounded-lg bg-[#8B0000] flex items-center justify-center text-[#EDE7C7] font-bold text-lg shadow-lg shadow-[#8B0000]/40 group-hover:scale-105 transition-transform">
+                <span className="w-8 h-8 rounded-lg bg-[#8B0000] flex items-center justify-center text-white font-bold text-lg shadow-md shadow-[#8B0000]/30 group-hover:scale-105 transition-transform">
                   M
                 </span>
                 <div className="flex flex-col">
-                  <span className="text-xl font-extrabold tracking-wider text-[#EDE7C7] group-hover:text-white transition-colors">
+                  <span className="text-xl font-extrabold tracking-wider text-[#18181B] group-hover:text-[#8B0000] transition-colors">
                     {BRAND.name}
                   </span>
-                  <span className="text-[9px] uppercase tracking-[0.25em] text-[#8E8770] -mt-1 font-medium">
+                  <span className="text-[9px] uppercase tracking-[0.25em] text-[#71717A] -mt-1 font-semibold">
                     Showroom
                   </span>
                 </div>
@@ -83,7 +83,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#141315]/70 border border-[#29181B] backdrop-blur-md">
+          <nav className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#E5DFD4] shadow-sm backdrop-blur-md">
             {NAV_LINKS.map((link) => {
               const sectionId = link.href.replace('#', '');
               const isActive = activeSection === sectionId;
@@ -95,10 +95,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
                     e.preventDefault();
                     scrollToSection(link.href);
                   }}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
                     isActive
-                      ? 'bg-[#8B0000] text-[#EDE7C7] shadow-md shadow-[#8B0000]/30'
-                      : 'text-[#C9C3A9] hover:text-[#EDE7C7] hover:bg-[#1E1D21]'
+                      ? 'bg-[#8B0000] text-white shadow-sm shadow-[#8B0000]/30'
+                      : 'text-[#52525B] hover:text-[#18181B] hover:bg-[#F6F3ED]'
                   }`}
                 >
                   {link.name}
@@ -114,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
                 id="nav-book-service-btn"
                 type="button"
                 onClick={onOpenBookService}
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-medium text-[#EDE7C7] hover:text-white bg-[#1A181C] hover:bg-[#232026] border border-[#29181B] transition-colors"
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-semibold text-[#18181B] hover:text-[#8B0000] bg-[#F6F3ED] hover:bg-[#EDE8DE] border border-[#E5DFD4] transition-colors shadow-2xs"
               >
                 <Wrench className="w-3.5 h-3.5 text-[#8B0000]" />
                 <span>Book Service</span>
@@ -128,7 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
                 if (onOpenShop) onOpenShop();
                 else scrollToSection('#mobiles');
               }}
-              className="flex items-center gap-2 px-5 py-2 rounded-full text-xs font-semibold tracking-wide bg-[#8B0000] hover:bg-[#A30808] text-[#EDE7C7] shadow-lg shadow-[#8B0000]/30 hover:shadow-[#8B0000]/50 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="flex items-center gap-2 px-5 py-2 rounded-full text-xs font-semibold tracking-wide bg-[#8B0000] hover:bg-[#A30808] text-white shadow-md shadow-[#8B0000]/25 hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
               <ShoppingBag className="w-3.5 h-3.5" />
               <span>Shop Now</span>
@@ -141,7 +141,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
-            className="lg:hidden p-2 rounded-lg bg-[#141315] border border-[#29181B] text-[#EDE7C7] hover:text-white focus:outline-none"
+            className="lg:hidden p-2 rounded-lg bg-white border border-[#E5DFD4] text-[#18181B] hover:text-[#8B0000] focus:outline-none shadow-xs"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -151,11 +151,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
       {/* Mobile Drawer Overlay */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/80 backdrop-blur-md lg:hidden flex flex-col justify-between pt-24 pb-8 px-6 transition-all"
+          className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm lg:hidden flex flex-col justify-between pt-24 pb-8 px-6 transition-all"
           onClick={() => setMobileMenuOpen(false)}
         >
-          <div className="flex flex-col gap-3" onClick={(e) => e.stopPropagation()}>
-            <div className="text-xs uppercase tracking-widest text-[#8E8770] font-mono px-3 mb-1">
+          <div className="flex flex-col gap-2.5 bg-white p-5 rounded-2xl border border-[#E5DFD4] shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="text-xs uppercase tracking-widest text-[#71717A] font-mono px-2 mb-1 font-semibold">
               Menu Navigation
             </div>
             {NAV_LINKS.map((link) => (
@@ -166,7 +166,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
                   e.preventDefault();
                   scrollToSection(link.href);
                 }}
-                className="flex items-center justify-between px-4 py-3 rounded-xl bg-[#141315]/90 border border-[#29181B] text-base font-medium text-[#EDE7C7] active:bg-[#8B0000]"
+                className="flex items-center justify-between px-4 py-2.5 rounded-xl bg-[#F6F3ED] border border-[#E5DFD4] text-sm font-semibold text-[#18181B] hover:bg-[#EDE8DE] transition-colors"
               >
                 <span>{link.name}</span>
                 <ArrowRight className="w-4 h-4 text-[#8B0000]" />
@@ -175,7 +175,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
           </div>
 
           {/* Bottom Actions for Mobile */}
-          <div className="flex flex-col gap-3 pt-6 border-t border-[#29181B]" onClick={(e) => e.stopPropagation()}>
+          <div className="flex flex-col gap-3 pt-4 bg-white/95 p-5 rounded-2xl border border-[#E5DFD4] shadow-xl mt-4" onClick={(e) => e.stopPropagation()}>
             <button
               type="button"
               onClick={() => {
@@ -183,7 +183,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
                 if (onOpenShop) onOpenShop();
                 else scrollToSection('#mobiles');
               }}
-              className="w-full py-3.5 rounded-xl bg-[#8B0000] text-[#EDE7C7] font-semibold text-center flex items-center justify-center gap-2 shadow-lg shadow-[#8B0000]/40"
+              className="w-full py-3 rounded-xl bg-[#8B0000] text-white font-semibold text-center flex items-center justify-center gap-2 shadow-md shadow-[#8B0000]/30 text-sm"
             >
               <ShoppingBag className="w-4 h-4" />
               <span>Explore Mobiles & Accessories</span>
@@ -196,7 +196,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
                   setMobileMenuOpen(false);
                   onOpenBookService();
                 }}
-                className="w-full py-3 rounded-xl bg-[#141315] border border-[#29181B] text-[#EDE7C7] text-sm font-medium flex items-center justify-center gap-2"
+                className="w-full py-2.5 rounded-xl bg-[#F6F3ED] border border-[#E5DFD4] text-[#18181B] text-sm font-medium flex items-center justify-center gap-2"
               >
                 <Wrench className="w-4 h-4 text-[#8B0000]" />
                 <span>Book Mobile Repair</span>
@@ -205,7 +205,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenShop, onOpenBookService })
 
             <a
               href={`tel:${CONTACT.phone.replace(/[^0-9+]/g, '')}`}
-              className="w-full py-2.5 rounded-xl bg-[#1A181C] text-center text-xs text-[#8E8770] flex items-center justify-center gap-1.5"
+              className="w-full py-2 rounded-xl bg-[#EDE8DE] text-center text-xs text-[#52525B] font-medium flex items-center justify-center gap-1.5"
             >
               <PhoneCall className="w-3.5 h-3.5 text-[#8B0000]" />
               <span>Call Us: {CONTACT.displayPhone}</span>

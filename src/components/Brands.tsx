@@ -1,88 +1,138 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { BRANDS } from '../config/brandConfig';
-import { ShieldCheck, ArrowUpRight, Sparkles } from 'lucide-react';
+import { ShieldCheck, ArrowUpRight, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { BrandLogo } from './BrandLogos';
 
 export const Brands: React.FC = () => {
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -320, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 320, behavior: 'smooth' });
+    }
+  };
+
+  // Duplicate brands array for seamless continuous marquee loop
+  const marqueeBrands = [...BRANDS, ...BRANDS];
+
   return (
-    <section id="brands" className="relative py-24 md:py-32 bg-transparent border-t border-[#1C1417]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="brands" className="relative py-24 md:py-32 bg-[#EDE7C7] border-t border-[#DDD6B5] overflow-hidden">
+      {/* Content Overlay at z-20 so the traveling phone moves cleanly underneath */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141315] border border-[#29181B] text-[11px] uppercase tracking-[0.2em] text-[#EDE7C7] mb-3">
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F6F3ED] border border-[#E5DFD4] text-[11px] uppercase tracking-[0.2em] text-[#18181B] font-semibold mb-3 shadow-2xs">
             <ShieldCheck className="w-3.5 h-3.5 text-[#8B0000]" />
             <span>Authorized Retail & Service Support</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#EDE7C7]">
-            Trusted Brands. <span className="text-gradient-cream">Genuine Choices.</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#18181B]">
+            Trusted Brands. <span className="text-gradient-burgundy">Genuine Choices.</span>
           </h2>
 
-          <p className="mt-3 text-sm sm:text-base text-[#8E8770] leading-relaxed">
-            We partner with and service world-leading mobile technology manufacturers with 100% genuine warranty coverage.
+          <p className="mt-3 text-sm sm:text-base text-[#52525B] leading-relaxed font-normal">
+            We partner with and service world-leading mobile technology manufacturers with 100% genuine parts and factory warranty coverage.
           </p>
-        </div>
 
-        {/* Brands Responsive Grid: 4-6 logos per row on desktop, 2-3 on mobile */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-5">
-          {BRANDS.map((brand) => (
-            <div
-              key={brand.id}
-              id={`brand-card-${brand.id}`}
-              className="group relative rounded-2xl bg-[#141315]/80 border border-[#29181B] hover:border-[#8B0000]/70 p-5 flex flex-col items-center justify-center text-center transition-all duration-300 hover:bg-[#1A171B] hover:shadow-xl hover:shadow-[#8B0000]/10 hover:scale-[1.03]"
+          {/* Navigation Controls for Manual Slider Touch */}
+          <div className="flex items-center justify-center gap-3 mt-6">
+            <button
+              type="button"
+              onClick={scrollLeft}
+              aria-label="Scroll brands left"
+              className="p-2.5 rounded-full bg-white hover:bg-[#F6F3ED] border border-[#E5DFD4] hover:border-[#8B0000] text-[#18181B] transition-all shadow-xs active:scale-95"
             >
-              {/* Brand Logo / Monogram Insignia */}
-              <div className="w-14 h-14 rounded-xl bg-[#1D1B20] border border-[#26171A] group-hover:border-[#8B0000] flex items-center justify-center mb-3 transition-colors">
-                {brand.logoUrl ? (
-                  <img
-                    src={brand.logoUrl}
-                    alt={`${brand.name} Logo`}
-                    className="w-10 h-10 object-contain filter grayscale group-hover:grayscale-0 transition-all"
-                  />
-                ) : (
-                  <span className="font-extrabold text-base tracking-wider text-[#EDE7C7] group-hover:text-white font-mono">
-                    {brand.monogram}
-                  </span>
-                )}
-              </div>
-
-              {/* Brand Name */}
-              <h3 className="text-sm font-bold text-[#EDE7C7] group-hover:text-white transition-colors">
-                {brand.name}
-              </h3>
-
-              {/* Tagline snippet */}
-              <p className="mt-1 text-[11px] text-[#8E8770] line-clamp-1 leading-snug">
-                {brand.tagline}
-              </p>
-
-              {/* Subtle hover accent arrow */}
-              <div className="mt-2 text-[10px] uppercase font-mono text-[#8B0000] opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-0.5">
-                <span>Genuine</span>
-                <ArrowUpRight className="w-2.5 h-2.5" />
-              </div>
-            </div>
-          ))}
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <span className="text-[11px] font-mono text-[#71717A] uppercase tracking-wider">
+              Continuous Sliding Gallery
+            </span>
+            <button
+              type="button"
+              onClick={scrollRight}
+              aria-label="Scroll brands right"
+              className="p-2.5 rounded-full bg-white hover:bg-[#F6F3ED] border border-[#E5DFD4] hover:border-[#8B0000] text-[#18181B] transition-all shadow-xs active:scale-95"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
+      </div>
 
-        {/* Assurance Bar below brands */}
-        <div className="mt-12 p-6 rounded-2xl bg-[#141315] border border-[#29181B] flex flex-col sm:flex-row items-center justify-between gap-4">
+      {/* Full-width Continuous Sliding Track (Marquee + Interactive Touch Scroll) */}
+      <div className="relative z-20 w-full overflow-hidden py-4">
+        {/* Subtle Edge Fade Gradients for smooth infinite sliding appearance */}
+        <div className="absolute top-0 bottom-0 left-0 w-12 sm:w-28 bg-gradient-to-r from-[#FFFFFF] to-transparent z-30 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-12 sm:w-28 bg-gradient-to-l from-[#FFFFFF] to-transparent z-30 pointer-events-none" />
+
+        {/* Continuous Animated Marquee Row 1 */}
+        <div
+          ref={scrollContainerRef}
+          className="flex overflow-x-auto no-scrollbar scroll-smooth cursor-grab active:cursor-grabbing select-none"
+        >
+          <div className="animate-brand-marquee flex items-center gap-4 sm:gap-6 py-2 px-4">
+            {marqueeBrands.map((brand, idx) => (
+              <div
+                key={`${brand.id}-${idx}`}
+                className="group relative w-64 sm:w-72 shrink-0 rounded-2xl bg-white/90 backdrop-blur-sm border border-[#E5DFD4] hover:border-[#8B0000] p-5 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-[#8B0000]/10 hover:-translate-y-1 shadow-xs"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  {/* Brand Logo Image */}
+                  <div className="w-14 h-14 rounded-xl bg-[#F8F6F2] border border-[#E5DFD4] group-hover:border-[#8B0000]/40 flex items-center justify-center p-2.5 transition-colors shadow-2xs">
+                    <BrandLogo brandId={brand.id} className="w-9 h-9 object-contain" />
+                  </div>
+
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#8B0000]/10 text-[#8B0000] border border-[#8B0000]/20">
+                    OEM Certified
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-base font-extrabold text-[#18181B] group-hover:text-[#8B0000] transition-colors flex items-center gap-1">
+                    <span>{brand.name}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 text-[#8B0000] transition-opacity" />
+                  </h3>
+                  <p className="text-xs text-[#52525B] mt-1 line-clamp-2 leading-relaxed">
+                    {brand.tagline}
+                  </p>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-[#F0EBE1] flex items-center justify-between text-[11px] text-[#71717A] font-mono">
+                  <span>{brand.popularModels[0]}</span>
+                  <span className="text-[#8B0000] font-semibold">100% Genuine</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Assurance Bar below brands */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-14">
+        <div className="p-6 rounded-2xl bg-[#F8F6F2] border border-[#E5DFD4] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
           <div className="flex items-center gap-3 text-center sm:text-left">
-            <span className="w-10 h-10 rounded-xl bg-[#8B0000]/20 border border-[#8B0000]/40 flex items-center justify-center text-[#EDE7C7]">
+            <span className="w-10 h-10 rounded-xl bg-[#8B0000]/10 border border-[#8B0000]/20 flex items-center justify-center text-[#8B0000] shrink-0">
               <Sparkles className="w-5 h-5 text-[#8B0000]" />
             </span>
             <div>
-              <h4 className="text-sm font-bold text-[#EDE7C7]">
+              <h4 className="text-sm font-bold text-[#18181B]">
                 Official Brand Parts & Factory Seal Diagnostics
               </h4>
-              <p className="text-xs text-[#8E8770]">
-                Every replacement component maintains IP water resistance and manufacturer warranty ratings.
+              <p className="text-xs text-[#52525B]">
+                Every smartphone and replacement component maintains original IP water resistance and manufacturer warranty ratings.
               </p>
             </div>
           </div>
 
           <a
             href="#contact"
-            className="px-5 py-2 rounded-full bg-[#1D1B20] hover:bg-[#252229] border border-[#29181B] text-xs font-semibold text-[#EDE7C7] whitespace-nowrap transition-colors"
+            className="px-6 py-2.5 rounded-full bg-white hover:bg-[#EDE8DE] border border-[#E5DFD4] text-xs font-semibold text-[#18181B] whitespace-nowrap transition-colors shadow-2xs"
           >
             Check Part Availability
           </a>

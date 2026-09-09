@@ -128,7 +128,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#0B0B0C] text-[#EDE7C7] selection:bg-[#8B0000] selection:text-[#EDE7C7]">
+    <div className="relative min-h-screen bg-[#FFFFFF] text-[#18181B] selection:bg-[#8B0000] selection:text-white">
       {/* Sticky Luxury Header */}
       <Navbar
         onOpenShop={() => setIsShopDrawerOpen(true)}
@@ -150,7 +150,7 @@ export default function App() {
       />
 
       {/* Main Content Sections */}
-      <main id="main-content" className="relative z-10">
+      <main id="main-content" className="relative">
         {/* Mobile Products */}
         <Products
           onViewDetails={handleViewProductDetails}

@@ -89,16 +89,10 @@ export const PhoneCanvas: React.FC<PhoneCanvasProps> = ({
       const isMobile = width < 768;
 
       if (fillMode === 'cover') {
-        if (isMobile) {
-          // On mobile, scale so image fills width comfortably without excessive side crop
-          drawWidth = width * 1.15;
-          drawHeight = drawWidth / imgAspect;
-        } else {
-          // Desktop / widescreen: full-bleed cover filling the screen
-          const scale = Math.max(width / imgWidth, height / imgHeight);
-          drawWidth = imgWidth * scale;
-          drawHeight = imgHeight * scale;
-        }
+        // Full-bleed cover filling 100% of the canvas width and height on all devices
+        const scale = Math.max(width / imgWidth, height / imgHeight);
+        drawWidth = imgWidth * scale;
+        drawHeight = imgHeight * scale;
       } else {
         if (imgAspect > canvasAspect) {
           drawWidth = width;

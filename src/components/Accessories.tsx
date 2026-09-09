@@ -47,13 +47,13 @@ export const Accessories: React.FC<AccessoriesProps> = ({ onAddToCart }) => {
         </div>
 
         {/* 12 Premium Category Chips (Horizontal Scroll) */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 max-w-full">
+        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-10 no-scrollbar w-full max-w-full">
           {ACCESSORY_CATEGORIES.map((cat) => (
             <button
               key={cat.id}
               type="button"
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 shadow-2xs ${
+              className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap shrink-0 transition-all flex items-center gap-1.5 shadow-2xs min-h-[36px] ${
                 activeCategory === cat.id
                   ? 'bg-[#EDE7C7] text-[#8B0000] shadow-md font-bold'
                   : 'bg-white/15 text-white hover:bg-white/25 border border-white/20'

@@ -40,13 +40,13 @@ export const Products: React.FC<ProductsProps> = ({ onViewDetails, onBuyNow }) =
           </div>
 
           {/* Brand Filter Pills */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-2 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0 max-w-full">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar w-full max-w-full">
             {brandsFilter.map((brand) => (
               <button
                 key={brand}
                 type="button"
                 onClick={() => setSelectedBrand(brand)}
-                className={`px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap shrink-0 transition-all min-h-[36px] ${
                   selectedBrand === brand
                     ? 'bg-[#EDE7C7] text-[#8B0000] shadow-md font-bold'
                     : 'bg-white/15 text-white hover:bg-white/25 border border-white/20'

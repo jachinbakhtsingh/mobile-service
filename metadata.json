@@ -1,0 +1,6 @@
+{
+  "name": "MOBIXA - Premium Mobile Store & Service Center",
+  "description": "Everything Mobile. All in One Place. Shop smartphones, get expert mobile repairs, and discover premium accessories at MOBIXA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
